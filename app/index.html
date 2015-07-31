@@ -1,0 +1,15 @@
+<head>
+    <title>Contactical</title>
+    <script src="bower_components/angular/angular.js"></script>
+</head>
+<body ng-app='Contactical'>
+    <h1>Contactical</h1>
+    <div ng-controller='ListContact as ctrl'>
+        <p ng-repeat='contact in ctrl.contacts'>
+            {{ contact.name | capitalize }}
+            <avatar name="contact.name"></avatar>
+        </p>
+    </div>
+    <script src="main.js"></script>
+</body>
+
