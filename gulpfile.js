@@ -2,10 +2,6 @@ var gulp = require('gulp');
 var browserSync = require('browser-sync');
 var server = require('gulp-live-server');
 
-gulp.task('echo', function() {
-    console.log('Hello, I\'m am Gulp');
-});
-
 gulp.task('test', function() {
     browserSync.init({
         notify: false,
