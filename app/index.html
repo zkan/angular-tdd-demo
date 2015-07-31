@@ -1,15 +1,45 @@
 <head>
-    <title>Contactical</title>
     <script src="bower_components/angular/angular.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="styles/main.css">
+    <title>The Ironclad Address Book</title>
 </head>
-<body ng-app='Contactical'>
-    <h1>Contactical</h1>
-    <div ng-controller='ListContact as ctrl'>
-        <p ng-repeat='contact in ctrl.contacts'>
-            {{ contact.name | capitalize }}
-            <avatar name="contact.name"></avatar>
-        </p>
+<body ng-app="AddressBook">
+    <div class="app-title">
+        <h1>
+            Contactical
+        </h1>
+        <h2>
+            The Ironclad Address Book
+        </h2>
+    </div>
+    <div class="contact-list inline-module">
+    </div>
+    <div class="add-contact inline-module">
+        <form>
+            <h3>Add A New Contact</h3>
+            <label>
+                Name (Req'd)
+                <input type="text" required>
+            </label>
+            <label>
+                Age
+                <input type='number'>
+            </label>
+            <label for='occupation'>
+                Occupation
+                <input type='text'>
+            </label>
+            <label for=''>
+                Email (Req'd)
+                <input type='email' required>
+            </label>
+            <label for='submit'>
+                Add New Contact
+                <input type='submit' id='submitNewContact'>
+            </label>
+            <div class='warning' style="display: none">Please check the information and try again.</div>
+        </form>
     </div>
     <script src="main.js"></script>
 </body>
-
