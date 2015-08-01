@@ -16,30 +16,28 @@ describe("ContactService", function() {
         expect(contactService.contacts).toEqual(jasmine.any(Array));
     });
 
-    it("should request for contacts", inject(function($httpBackend) {
-        // Arrange
-        var data = [{name: "a"}, {name: "b"}];
-        $httpBackend.expectGET("http://localhost:9001/contacts/")
-            .respond(200, data);
+    describe("get contacts", function() {
+        var $httpBackend, contacts;
 
-        // Action
-        contactService.get();
-        $httpBackend.flush();
+        beforeEach(inject(function($injector) {
+            $httpBackend = $injector.get("$httpBackend");
 
-        // Assert
-        expect(contactService.contacts.length).toEqual(2);
-    }));
+            var data = [{name: "a"}, {name: "b"}];
+            $httpBackend.expectGET("http://localhost:9001/contacts/")
+                .respond(200, data);
 
-    it("should keep contacts in the original instance", inject(function($httpBackend) {
-        var contacts = contactService.contacts;
+            contacts = contactService.contacts;
 
-        var data = [{name: "a"}, {name: "b"}];
-        $httpBackend.expectGET("http://localhost:9001/contacts/")
-            .respond(200, data);
+            contactService.get();
+            $httpBackend.flush();
+        }));
 
-        contactService.get();
-        $httpBackend.flush();
+        it("should request for contacts", function() {
+            expect(contactService.contacts.length).toEqual(2);
+        });
 
-        expect(contactService.contacts).toBe(contacts);
-    }));
+        it("should keep contacts in the original instance", function() {
+            expect(contactService.contacts).toBe(contacts);
+        });
+    });
 });
