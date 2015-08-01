@@ -59,3 +59,19 @@ describe("ListContacts", function() {
         expect($scope.contacts).toBe(ContactService.contacts);
     }));
 });
+
+describe("Copitalize Filter", function() {
+    var capitalize;
+
+    beforeEach(module("Contactical"));
+
+    beforeEach(inject(function($filter) {
+        capitalize = $filter("capitalize");
+    }));
+
+    it("should capitalize first letter of each string after split", function() {
+        var name = "kan ouivirach";
+
+        expect(capitalize(name)).toEqual("Kan Ouivirach");
+    });
+});

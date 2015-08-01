@@ -15,7 +15,7 @@
     </div>
     <div ng-controller="ListContacts" class="contact-list inline-module">
         <!-- Contact List -->
-        <p ng-repeat="each in contacts">{{ each.name }}</p>
+        <p ng-repeat="each in contacts">{{ each.name | capitalize }}</p>
     </div>
     <div class="add-contact inline-module">
         <form>

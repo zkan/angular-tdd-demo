@@ -18,4 +18,13 @@ angular.module("Contactical", [])
         $scope.contacts = ContactService.contacts;
 
         ContactService.get();
+    })
+    .filter("capitalize", function() {
+        function capitalizeFilter(input) {
+            return input.split(" ").map(function(word) {
+                return word[0].toUpperCase() + word.slice(1);
+            }).join(" ");
+        };
+
+        return capitalizeFilter;
     });
