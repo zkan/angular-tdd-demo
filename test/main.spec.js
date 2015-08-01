@@ -29,4 +29,17 @@ describe("ContactService", function() {
         // Assert
         expect(contactService.contacts.length).toEqual(2);
     }));
+
+    it("should keep contacts in the original instance", inject(function($httpBackend) {
+        var contacts = contactService.contacts;
+
+        var data = [{name: "a"}, {name: "b"}];
+        $httpBackend.expectGET("http://localhost:9001/contacts/")
+            .respond(200, data);
+
+        contactService.get();
+        $httpBackend.flush();
+
+        expect(contactService.contacts).toBe(contacts);
+    }));
 });
