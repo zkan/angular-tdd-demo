@@ -45,15 +45,17 @@ describe("ContactService", function() {
 describe("ListContacts", function() {
     beforeEach(module("Contactical"));
 
-    it("should call ContactService.get()", inject(function($controller, $injector) {
+    it("should call ContactService.get() and keep contacts in $scope", inject(function($controller, $injector, $rootScope) {
         // Arrange
+        var $scope = $rootScope.$new();
         var ContactService = $injector.get("ContactService");
         spyOn(ContactService, 'get');
 
         // Action
-        $controller("ListContacts");
+        $controller("ListContacts", { $scope: $scope });
 
         // Assert
         expect(ContactService.get).toHaveBeenCalled();
+        expect($scope.contacts).toBe(ContactService.contacts);
     }));
 });

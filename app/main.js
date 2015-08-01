@@ -14,6 +14,8 @@ angular.module("Contactical", [])
                 });
         };
     })
-    .controller("ListContacts", function(ContactService) {
+    .controller("ListContacts", function(ContactService, $scope) {
+        $scope.contacts = ContactService.contacts;
+
         ContactService.get();
     });
