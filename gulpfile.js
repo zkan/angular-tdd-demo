@@ -28,13 +28,13 @@ gulp.task('serve', ['server'], function() {
         notify: false,
         port: 8082,
         server: {
-            baseDir: ["app"],
+            baseDir: ["app", "test"],
             routes: {
                 '/bower_components': 'bower_components'
             }
         }
     });
 
-    gulp.watch(['app/**/*.*'])
+    gulp.watch(['app/**/*.*', "test/**/*.*"])
         .on('change', browserSync.reload);
 });
