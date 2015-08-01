@@ -41,3 +41,19 @@ describe("ContactService", function() {
         });
     });
 });
+
+describe("ListContacts", function() {
+    beforeEach(module("Contactical"));
+
+    it("should call ContactService.get()", inject(function($controller, $injector) {
+        // Arrange
+        var ContactService = $injector.get("ContactService");
+        spyOn(ContactService, 'get');
+
+        // Action
+        $controller("ListContacts");
+
+        // Assert
+        expect(ContactService.get).toHaveBeenCalled();
+    }));
+});
