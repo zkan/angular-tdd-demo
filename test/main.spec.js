@@ -17,7 +17,7 @@ describe("ContactService", function() {
     });
 
     describe("get contacts", function() {
-        var $httpBackend, contacts;
+        var contacts;
 
         beforeEach(inject(function($injector) {
             $httpBackend = $injector.get("$httpBackend");
