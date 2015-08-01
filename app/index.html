@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <title>The Ironclad Address Book</title>
 </head>
-<body ng-app="AddressBook">
+<body ng-app="Contactical">
     <div class="app-title">
         <h1>
             Contactical
@@ -13,7 +13,9 @@
             The Ironclad Address Book
         </h2>
     </div>
-    <div class="contact-list inline-module">
+    <div ng-controller="ListContacts" class="contact-list inline-module">
+        <!-- Contact List -->
+        <p ng-repeat="each in contacts">{{ each.name }}</p>
     </div>
     <div class="add-contact inline-module">
         <form>
